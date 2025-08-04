@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: js-email
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: js-email
+  template:
+    metadata:
+      labels:
+        app: js-email
+    spec:
+      containers:
+      - name: js-email
+        image: amitfreeze/jsdb:v2
+        env:
+          - name: MONGO_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: MONGO_HOST
+          - name: MONGO_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: MONGO_PORT
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-js-email
+spec:
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 3000
+  selector:
+    app: js-email
+  type: LoadBalancer
