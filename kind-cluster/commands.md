@@ -10,6 +10,10 @@
 
 - Create a 3-node Kubernetes cluster using Kind:
   ```bash
+  [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.29.0/kind-linux-amd64
+  mkdir -p ~/.local/bin
+  chmod 700 kind
+  mv kind ~/.local/bin
   kind create cluster --config=config.yml
   ```
 
