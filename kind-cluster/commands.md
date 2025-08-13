@@ -56,13 +56,13 @@
 
 - Clone the voting app repository:
   ```bash
-  git clone https://github.com/dockersamples/example-voting-app.git
-  cd example-voting-app/
+  git clone https://github.com/bhatt014/kubernetes.git
+  cd kubernetes/
   ```
 
 - Apply Kubernetes YAML specifications for the voting app:
   ```bash
-  kubectl apply -f k8s-specifications/
+  kubectl apply -f Lab-final/
   ```
 
 - List all Kubernetes resources:
