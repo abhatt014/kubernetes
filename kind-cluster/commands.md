@@ -10,6 +10,9 @@
 
 - Create a 3-node Kubernetes cluster using Kind:
   ```bash
+  sudo dnf install -y git docker
+  sudo systemctl enable --now docker
+  sudo usermod -aG docker $USER && newgrp docker
   [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.29.0/kind-linux-amd64
   mkdir -p ~/.local/bin
   chmod 700 kind
