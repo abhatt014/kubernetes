@@ -13,6 +13,8 @@
   sudo dnf install -y git docker
   sudo systemctl enable --now docker
   sudo usermod -aG docker $USER && newgrp docker
+  git clone https://github.com/abhatt014/kubernetes.git
+  cd kubernetes
   [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.29.0/kind-linux-amd64
   mkdir -p ~/.local/bin
   chmod 700 kind
