@@ -115,7 +115,8 @@
 
 - Expose Argo CD server using NodePort:
   ```bash
-  kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
+ kubectl -n argocd patch svc argocd-server -p '{"spec": {"type": "NodePort", "ports":[{"name":"http","port":80,"targetPort":8080,"nodePort":32480,"protocol":"TCP"},{"name":"https","port":443,"targetPort":8080,"nodePort":30268,"protocol":"TCP"}]}}'
+
   ```
 
 - Forward ports to access Argo CD server:
