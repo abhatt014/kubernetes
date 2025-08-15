@@ -123,10 +123,12 @@
 
   ```
 
-- Forward ports to access Argo CD server:
+- Retrieve Argo CD admin password:
   ```bash
-  kubectl port-forward -n argocd service/argocd-server 8443:443 &
+  kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
   ```
+
+
 
 ---
 
