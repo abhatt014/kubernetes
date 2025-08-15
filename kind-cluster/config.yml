@@ -3,8 +3,12 @@ apiVersion: kind.x-k8s.io/v1alpha4
 
 nodes:
 - role: control-plane
-  image: kindest/node:v1.30.0
+  extraPortMappings:
+    - containerPort: 30268   # Your ArgoCD NodePort
+      hostPort: 30268
+      protocol: TCP
+    - containerPort: 32480   # If you want HTTP access
+      hostPort: 32480
+      protocol: TCP
 - role: worker
-  image: kindest/node:v1.30.0
 - role: worker
-  image: kindest/node:v1.30.0
